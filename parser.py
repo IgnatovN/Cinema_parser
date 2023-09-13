@@ -46,6 +46,9 @@ for movie in movies:
     param = {"name": movie}
     req = requests.get(kinopoisk_api_url, headers=headers, params=param).json()
 
+    if len(req['docs']) == 0:
+        continue
+
     kp = req['docs'][0]['rating']['kp']
     imdb = req['docs'][0]['rating']['imdb']
 
